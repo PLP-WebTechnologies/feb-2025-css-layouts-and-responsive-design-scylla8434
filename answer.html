@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Sticky Layout...Week 4</title>
+  <style>
+    /* -------------------------------------------------
+       Global Reset and Base Styles
+    ------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%; /* Ensure the body takes full height for sticky footer */
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      /* Use flex to help push the footer to bottom when the content is short */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* -------------------------------------------------
+       Header / Navigation Bar
+    ------------------------------------------------- */
+    nav {
+      background-color: #d1f0ed;
+      color: #0e0302;
+      padding: 10px 20px;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    nav ul li {
+      margin: 0 10px;
+    }
+    
+    nav ul li a {
+      color: #f00a0a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    /* -------------------------------------------------
+       Main Content Area (Flex Container)
+    ------------------------------------------------- */
+    /* .content-wrapper allows the main area and sidebar to expand */
+    .content-wrapper {
+      flex: 1; 
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      justify-content: space-between;
+    }
+    
+    /* Main Content Section */
+    .main-content {
+      flex: 1;
+      background-color: #fff;
+      padding: 20px;
+      margin-right: 20px;
+      border-radius: 8px;
+      /* Minimum width to help with responsiveness */
+      min-width: 0;
+    }
+    
+    /* Sidebar Section */
+    .sidebar {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      width: 300px; /* Fixed width for desktop view */
+    }
+    
+    /* Sticky Sidebar for Desktop */
+    @media (min-width: 1025px) {
+      .sidebar {
+        position: sticky;
+        top: 20px; /* Distance from the top during scroll */
+        margin-top: 0; /* Remove margin on larger screens */
+      }
+    }
+    
+    /* -------------------------------------------------
+       Footer - Sticky Footer at the bottom
+    ------------------------------------------------- */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    /* -------------------------------------------------
+       Responsive Media Queries
+    ------------------------------------------------- */
+    /* Mobile Devices */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      .content-wrapper {
+        flex-direction: column;
+      }
+      .main-content {
+        margin-right: 0;
+      }
+      .sidebar {
+        width: 100%;
+        margin-top: 20px;
+        position: static; /* Remove sticky behavior on mobile */
+      }
+    }
+    
+    /* Tablet Devices */
+    @media (min-width: 601px) and (max-width: 1024px) {
+      .content-wrapper {
+        flex-direction: row;
+      }
+      .main-content {
+        margin-right: 15px;
+      }
+      .sidebar {
+        width: 100%; 
+        margin-top: 20px;
+        position: static; /* Sidebar becomes sticky only on desktop */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content & Sidebar Container -->
+  <div class="content-wrapper">
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1>I am a PLP Student</h1>
+      <p>This is the main content area. The layout is built using Flexbox for fluid responsiveness.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, velit sit amet tempor ultricies, urna orci gravida risus, in facilisis sapien libero eget quam.</p>
+    </div>
+
+    <!-- Sidebar (Sticky on Desktop) -->
+    <div class="sidebar">
+      <h2>Sidebar</h2>
+      <p>This is the sidebar. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint earum culpa dolorem nemo quos ducimus adipisci minus illum, rerum ex! Minus fuga, soluta provident qui nesciunt repellat adipisci accusamus eligendi?</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; Scylla8434</p>
+  </footer>
+</body>
+</html>
